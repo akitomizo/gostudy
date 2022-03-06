@@ -24,15 +24,35 @@ func init() {
 
 // メイン関数
 func main() {
+
+	// varieable
 	fmt.Println("main!")
 	declareVariables()
 	dispType()
 	binaryDigits()
 	testString()
 	castStringToInt()
+
+	// array slice map
 	arrayAndSlice()
 	sliceMake()
 	mapTest()
+	byteTest()
+
+	// function
+	add1, add2 := addTest(1, 2, "addStr")
+	fmt.Println("add=", add1, add2)
+	fmt.Println("resultTest=", resultTest())
+	//
+	innerF := func(x int, y int) {
+		fmt.Println("innerfunction内部関数:変数へfunctionを格納", x+y)
+	}
+	innerF(1, 2)
+
+	//即時関数
+	func(x int, y int) {
+		fmt.Println("ImmediateFunction即時関数:", x+y)
+	}(1, 3)
 }
 
 //関数内でしか実行できない変数の宣言
@@ -75,6 +95,7 @@ func castStringToInt() {
 	fmt.Printf("%T %v", i, i)
 }
 
+//配列とスライス
 func arrayAndSlice() {
 	fmt.Println("------arrayAndSlice")
 	var a [2]int
@@ -105,6 +126,7 @@ func arrayAndSlice() {
 	fmt.Println("slice]:", c)
 }
 
+//スライスをmakeでつくる
 func sliceMake() {
 	fmt.Println("------sliceMake")
 
@@ -130,6 +152,7 @@ func sliceMake() {
 	}
 }
 
+// マップ
 func mapTest() {
 	m := map[string]int{"apple": 100, "banana": 200}
 	fmt.Println(m)
@@ -148,6 +171,26 @@ func mapTest() {
 	v2, check2 := m["nothing"] // 存在チェック ok=false
 	fmt.Println(v2, check2)
 
+}
+
+func byteTest() {
+	fmt.Println("------byteTest")
+	b := []byte{72, 73}
+	fmt.Println(b)
+	fmt.Println(string(b))
+
+	c := []byte("HI")
+	fmt.Println(c)
+	fmt.Println(string(c))
+}
+
+func addTest(x, y int, str string) (int, string) {
+	return x + y, str
+}
+
+func resultTest() (result string) { //戻り値を事前に設定(わかりやすい)
+	result = "testStr"
+	return //戻り値をあらかじめ宣言しておくと、returnの設定は不要
 }
 
 func template() {
