@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"strconv"
+	"time"
 )
 
 // 関数外で実行できる変数の宣言
@@ -12,6 +13,23 @@ var (
 	s    string  = "str"
 	t, f bool    = true, false
 )
+
+// closure クロージャー
+func incrementGenerator() func() int {
+	x := 0 //
+	return func() int {
+		x++
+		return x
+	}
+
+}
+
+func getCircleArea(pi float64) func(radius float64) float64 {
+	return func(radius float64) float64 {
+		return pi * radius * radius
+	}
+
+}
 
 const pi = 3.14
 
@@ -25,6 +43,7 @@ func init() {
 // メイン関数
 func main() {
 
+	fmt.Println("実行時間：", time.Now())
 	// varieable
 	fmt.Println("main!")
 	declareVariables()
@@ -45,14 +64,27 @@ func main() {
 	fmt.Println("resultTest=", resultTest())
 	//
 	innerF := func(x int, y int) {
-		fmt.Println("innerfunction内部関数:変数へfunctionを格納", x+y)
+		fmt.Println("----------innerfunction内部関数:変数へfunctionを格納", x+y)
 	}
 	innerF(1, 2)
 
 	//即時関数
 	func(x int, y int) {
-		fmt.Println("ImmediateFunction即時関数:", x+y)
+		fmt.Println("----------ImmediateFunction即時関数:", x+y)
 	}(1, 3)
+
+	//　クロージャー
+	counter := incrementGenerator()
+	fmt.Println("----------クロージャー:", counter())
+	fmt.Println("----------クロージャー:", counter())
+	fmt.Println("----------クロージャー:", counter())
+	fmt.Println("----------クロージャー:", counter())
+
+	// クロージャー2
+	circle1 := getCircleArea(3)
+	fmt.Println("----------クロージャーcircle1:", circle1(2))
+	circle2 := getCircleArea(3)
+	fmt.Println("----------クロージャーcircle2:", circle2(3))
 }
 
 //関数内でしか実行できない変数の宣言
@@ -63,7 +95,6 @@ func declareVariables() {
 	xs := "str"
 	xt, xf := true, false
 	fmt.Println(xi, xf64, xs, xt, xf)
-	// fmt.Println("testfunc", time.Now())
 }
 
 //関数内でしか実行できない変数の宣言
