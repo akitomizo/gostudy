@@ -30,7 +30,7 @@ func main() {
 	binaryDigits()
 	testString()
 	castStringToInt()
-
+	arrayAndSlice()
 }
 
 //関数内でしか実行できない変数の宣言
@@ -67,7 +67,44 @@ func testString() {
 }
 
 func castStringToInt() {
+	fmt.Println("------castStringToInt")
 	test := "14"
 	i, _ := strconv.Atoi(test) // i, err だけど使わない時は_にしておく
-	fmt.Printf("%T%v", i, i)
+	fmt.Printf("%T %v", i, i)
+}
+
+func arrayAndSlice() {
+	fmt.Println("------arrayAndSlice")
+	var a [2]int
+	a[0] = 100
+	a[1] = 200
+	fmt.Println("array:", a)
+
+	var b []int = []int{1, 2, 3, 4}
+	b[0] = 100
+	b = append(b, 5)
+	fmt.Println("arrayb:", b)
+	fmt.Println("arrayb[1:3:5]:", b[:2])
+	fmt.Println("arrayb[1:3:5]:", b[2:])
+	fmt.Println("arrayb[1:3:5]:", b[1:3])
+
+	b[0] = 100
+	b = append(b, 5)
+	fmt.Println("arrayb:", b)
+	fmt.Println("arrayb[1:3:5]:", b[:2])
+	fmt.Println("arrayb[1:3:5]:", b[2:])
+	fmt.Println("arrayb[1:3:5]:", b[1:3])
+
+	var c = [][]int{
+		{1, 2},
+		{3, 4},
+		{5, 6},
+	}
+	fmt.Println("slice]:", c)
+}
+
+func template() {
+	fmt.Println("------template")
+	test := "test"
+	fmt.Printf(test)
 }
