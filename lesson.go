@@ -31,6 +31,7 @@ func main() {
 	testString()
 	castStringToInt()
 	arrayAndSlice()
+	sliceMake()
 }
 
 //関数内でしか実行できない変数の宣言
@@ -103,8 +104,19 @@ func arrayAndSlice() {
 	fmt.Println("slice]:", c)
 }
 
+func sliceMake() {
+	fmt.Println("------sliceMake")
+
+	//
+	a := make([]int, 0) //0のスライスをメモリーに確保
+	fmt.Printf("make:len=%d cap=%d value=%v\n", len(a), cap(a), a)
+
+	var b []int //nilのまま(メモリーに確保しない)
+	fmt.Printf("var:len=%d cap=%d value=%v\n", len(b), cap(b), b)
+}
+
 func template() {
 	fmt.Println("------template")
 	test := "test"
-	fmt.Printf(test)
+	fmt.Println(test)
 }
