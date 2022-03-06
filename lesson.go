@@ -32,6 +32,7 @@ func main() {
 	castStringToInt()
 	arrayAndSlice()
 	sliceMake()
+	mapTest()
 }
 
 //関数内でしか実行できない変数の宣言
@@ -107,12 +108,46 @@ func arrayAndSlice() {
 func sliceMake() {
 	fmt.Println("------sliceMake")
 
-	//
 	a := make([]int, 0) //0のスライスをメモリーに確保
 	fmt.Printf("make:len=%d cap=%d value=%v\n", len(a), cap(a), a)
 
 	var b []int //nilのまま(メモリーに確保しない)
 	fmt.Printf("var:len=%d cap=%d value=%v\n", len(b), cap(b), b)
+
+	c := make([]int, 3) //3のスライスをメモリーに確保
+	fmt.Printf("make:len=%d cap=%d value=%v\n", len(c), cap(c), c)
+
+	test1 := make([]int, 4)
+	for i := 0; i < 5; i++ {
+		test1 = append(test1, i)
+		fmt.Println("test1:", i, test1)
+	}
+
+	var test2 []int
+	for i := 0; i < 5; i++ {
+		test2 = append(test2, i)
+		fmt.Println("test2:", i, test2)
+	}
+}
+
+func mapTest() {
+	m := map[string]int{"apple": 100, "banana": 200}
+	fmt.Println(m)
+
+	m["banana"] = 300
+	fmt.Println(m)
+
+	m["newFruit"] = 500
+	fmt.Println(m)
+
+	fmt.Println(m["nothing"]) //デフォルトは0
+
+	v, check := m["newFruit"] // 存在チェック ok=true
+	fmt.Println(v, check)
+
+	v2, check2 := m["nothing"] // 存在チェック ok=false
+	fmt.Println(v2, check2)
+
 }
 
 func template() {
