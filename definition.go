@@ -85,6 +85,9 @@ func main() {
 	fmt.Println("----------クロージャーcircle1:", circle1(2))
 	circle2 := getCircleArea(3)
 	fmt.Println("----------クロージャーcircle2:", circle2(3))
+
+	s := []string{"test", "test2", "test3"}
+	variableLengthArgs(s...)
 }
 
 //関数内でしか実行できない変数の宣言
@@ -222,6 +225,15 @@ func addTest(x, y int, str string) (int, string) {
 func resultTest() (result string) { //戻り値を事前に設定(わかりやすい)
 	result = "testStr"
 	return //戻り値をあらかじめ宣言しておくと、returnの設定は不要
+}
+
+// 可変調引数
+func variableLengthArgs(params ...string) {
+	fmt.Println("------variableLengthArgs")
+	fmt.Println(len(params), params)
+	for _, param := range params {
+		fmt.Println(param)
+	}
 }
 
 func template() {

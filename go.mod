@@ -1,3 +1,3 @@
-module example/lesson
+module example/definition
 
 go 1.17
