@@ -1,9 +1,8 @@
-package main
+package definition
 
 import (
 	"fmt"
 	"strconv"
-	"time"
 )
 
 // 関数外で実行できる変数の宣言
@@ -35,17 +34,16 @@ const pi = 3.14
 
 // 初期化処理
 func init() {
-	fmt.Println("init")
+	fmt.Println("-----definition-init")
 	fmt.Println(i, f64, s, t, f)
 	fmt.Println(pi)
 }
 
 // メイン関数
-func main() {
+func Definition() {
 
-	fmt.Println("実行時間：", time.Now())
 	// varieable
-	fmt.Println("main!")
+	fmt.Println("----------------definition.lesson")
 	declareVariables()
 	dispType()
 	binaryDigits()
