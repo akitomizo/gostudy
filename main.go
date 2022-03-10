@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
-	"lesson/pkg/definition"
+	"lesson/pkg/statement"
+
+	// "lesson/pkg/definition"
 	"time"
 )
 
@@ -16,7 +18,8 @@ func main() {
 
 	fmt.Println("**********main**********")
 	fmt.Println("実行時間：", time.Now())
-	definition.Definition()
+	statement.Statement()
+	// definition.Definition()
 }
 
 func template() {
